@@ -23,11 +23,13 @@ Data <- transform(Data, SOC = as.numeric(SOC),
 
 # Separating the columns
 SOC <- Data[2]
+SOC <- as.numeric(unlist(SOC))
 
 TN <- Data[3]
+TN <- as.numeric(unlist(TN))
 
 BD <- Data[4]
-
+BD <- as.numeric(unlist(BD))
 
 # Finding out more about each column
 SOC_df <- SOC %>%
@@ -54,5 +56,13 @@ BD_df <- BD %>%
 
 # Data Visualization
 
-ggplot(Data, aes(x=SOC, y=TN, color=Plot))+
-  geom_point()
+pairs(Data[2:4])
+
+
+# Data Correlation
+
+cor.test(TN, SOC)
+
+# The correlation coefficient is 0.6910264, which shows a positive correlation. 
+# The p-value is 0.0003695, which shows that the correlation is statistically significant.
+
