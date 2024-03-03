@@ -59,7 +59,33 @@ BD_df <- BD %>%
 pairs(Data[2:4])
 
 
-# Data Correlation
+
+
+
+# Tukey's Test
+
+# Organize the data into a data frame
+SOC_Tukey <- data.frame(group = c("N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "N", "N"),
+                   values = SOC)
+
+TN_Tukey <- data.frame(group = c("N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "N", "N"),
+                       values = TN)
+
+# Fit one-way ANOVA model
+
+SOC_model <- aov(values~group, data=SOC_Tukey)
+summary(SOC_model)
+# The p-value is not statistically significant. Therefore Tukey's test will not be used.
+
+TN_model <- aov(values~group, data=TN_Tukey)
+summary(TN_model)
+# The p-value is not statistically significant. Therefore Tukey's test will not be used.
+
+
+
+
+
+# Pearson's Correlation Test
 
 cor.test(TN, SOC, method = "pearson")
 
