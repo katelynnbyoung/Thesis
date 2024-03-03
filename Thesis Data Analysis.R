@@ -16,9 +16,10 @@ Data <- read_xlsx("D:/UP/Thesis/Thesis/Thesis.xlsx")
 print(Data, n=22)
 
 # Transforming the data to numeric class
-transform(Data, SOC = as.numeric(SOC), 
+Data <- transform(Data, SOC = as.numeric(SOC), 
           TN = as.numeric(TN),
-          BD = as.numeric(BD))
+          BD = as.numeric(BD),
+          Plot = as.character(Plot))
 
 # Separating the columns
 SOC <- Data[2]
@@ -50,3 +51,8 @@ BD_df <- BD %>%
             minimum = min(BD),
             maximum = max(BD))
 
+
+# Data Visualization
+
+ggplot(Data, aes(x=SOC, y=TN, color=Plot))+
+  geom_point()
