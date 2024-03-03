@@ -49,3 +49,4 @@ BD_df <- BD %>%
             mode = Mode(BD),
             minimum = min(BD),
             maximum = max(BD))
+
