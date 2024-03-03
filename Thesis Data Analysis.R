@@ -61,7 +61,7 @@ pairs(Data[2:4])
 
 # Data Correlation
 
-cor.test(TN, SOC)
+cor.test(TN, SOC, method = "pearson")
 
 # The correlation coefficient is 0.6910264, which shows a positive correlation. 
 # The p-value is 0.0003695, which shows that the correlation is statistically significant.
