@@ -71,6 +71,9 @@ SOC_Tukey <- data.frame(group = c("N", "N", "N", "N", "N", "N", "N", "N", "N", "
 TN_Tukey <- data.frame(group = c("N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "N", "N"),
                        values = TN)
 
+BD_Tukey <- data.frame(group = c("N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "N", "N"),
+                       values = BD)
+
 # Fit one-way ANOVA model
 
 SOC_model <- aov(values~group, data=SOC_Tukey)
@@ -81,14 +84,34 @@ TN_model <- aov(values~group, data=TN_Tukey)
 summary(TN_model)
 # The p-value is not statistically significant. Therefore Tukey's test will not be used.
 
+BD_model <- aov(values~group, data=BD_Tukey)
+summary(BD_model)
+# The p-value is statistically significant. Therefore Tukey's test will be used.
 
+
+
+# Tukey Test
+TukeyHSD(BD_model, conf.level=.95) 
+# The p-value is statistically significant. Therefore there is a statistically 
+# significant difference between the mean bulk density of each management strategy.
+
+# Plot Confidence Levels of the Tukey Test
+plot(TukeyHSD(BD_model, conf.level=.95), las = 2)
 
 
 
 # Pearson's Correlation Test
 
+# Testing TN and SOC
 cor.test(TN, SOC, method = "pearson")
 
-# The correlation coefficient is 0.6910264, which shows a positive correlation. 
 # The p-value is 0.0003695, which shows that the correlation is statistically significant.
+# The correlation coefficient is 0.6910264, which shows a positive correlation. 
 
+# Testing SOC and BD
+cor.test(BD, SOC, method = "pearson")
+# The p-value is not statistically significant at 0.171.
+
+# Testing TN and BD
+cor.test(BD, TN, method = "pearson")
+# The p-value is 0.217, so it is not statistically significant.
