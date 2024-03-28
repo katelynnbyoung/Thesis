@@ -32,21 +32,21 @@ BD <- Data[4]
 BD <- as.numeric(unlist(BD))
 
 # Finding out more about each column
-SOC_df <- SOC %>%
+SOC_df <- Data %>%
   summarise(average = mean(SOC),
             median = median(SOC),
-            mode =  Mode(SOC),
+            mode = Mode(SOC),
             minimum = min(SOC),
             maximum = max(SOC))
 
-TN_df <- TN %>%
+TN_df <- Data %>%
   summarise(average = mean(TN),
             median = median(TN),
             mode = Mode(TN),
             minimum = min(TN),
             maximum = max(TN))
 
-BD_df <- BD %>%
+BD_df <- Data %>%
   summarise(average = mean(BD),
             median = median(BD),
             mode = Mode(BD),
