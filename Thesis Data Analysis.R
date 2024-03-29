@@ -17,7 +17,7 @@ print(Data, n=22)
 
 
 # Finding out more about each column
-SOC_df <- Data$`SOC in g/100g` %>%
+SOC_df <- Data %>%
   summarise(average = mean(SOC),
             median = median(SOC),
             mode = Mode(SOC),
@@ -43,7 +43,31 @@ BD_df <- Data %>%
 
 pairs(Data[2:4])
 
+# Order Plot numbers for bar charts
+Data_bar <- Data
+Data_bar$Plot <- factor(Data_bar$Plot,
+                                   levels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"))
 
+# Bar chart for SOC
+SOC_plot <- ggplot(data = Data_bar) +
+  geom_col(mapping = aes(x = Plot, y = SOC))+
+  ylab("SOC in g/100g")+
+  xlab("Plot Number")+
+  ggtitle("Soil Organic Carbon (SOC) per Plot")
+
+# Bar chart for TN
+TN_plot <- ggplot(data = Data_bar) +
+  geom_col(mapping = aes(x = Plot, y = TN))+
+  ylab("TN in g/100g")+
+  xlab("Plot Number")+
+  ggtitle("Total Nitrogen (TN)) per Plot")
+
+# Bar chart for BD
+BD_plot <- ggplot(data = Data_bar) +
+  geom_col(mapping = aes(x = Plot, y = BD))+
+  ylab("BD in g/cm3")+
+  xlab("Plot Number")+
+  ggtitle("Bulk Density (BD) per Plot")
 
 
 
