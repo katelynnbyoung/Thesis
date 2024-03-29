@@ -51,14 +51,14 @@ Data_bar$Plot <- factor(Data_bar$Plot,
 # Bar chart for SOC
 SOC_plot <- ggplot(data = Data_bar) +
   geom_col(mapping = aes(x = Plot, y = SOC))+
-  ylab("SOC in g/100g")+
+  ylab("SOC in g/100g of soil")+
   xlab("Plot Number")+
   ggtitle("Soil Organic Carbon (SOC) per Plot")
 
 # Bar chart for TN
 TN_plot <- ggplot(data = Data_bar) +
   geom_col(mapping = aes(x = Plot, y = TN))+
-  ylab("TN in g/100g")+
+  ylab("TN in g/100g of soil")+
   xlab("Plot Number")+
   ggtitle("Total Nitrogen (TN)) per Plot")
 
