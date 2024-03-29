@@ -71,41 +71,33 @@ BD_plot <- ggplot(data = Data_bar) +
 
 
 
-# Tukey's Test
+# Independent Samples t-Test
 
-# Organize the data into a data frame
-SOC_Tukey <- data.frame(group = c("N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "N", "N"),
-                   values = SOC)
+# Create vectors for each parameter
 
-TN_Tukey <- data.frame(group = c("N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "N", "N"),
-                       values = TN)
+SOC_N <- c(0.675, 1.668, 1.207, 1.406, 1.110, 1.440, 2.010, 2.245, 1.776, 1.869, 1.374, 2.307, 2.408)
+SOC_ANR <- c(1.341, 1.730, 1.984, 1.952, 1.488, 1.731, 1.691, 1.574, 1.497)
 
-BD_Tukey <- data.frame(group = c("N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "N", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "ANR", "N", "N"),
-                       values = BD)
+TN_N <- c(0.130, 0.274, 0.365, 0.128, 0.161, 0.365, 0.295, 0.366, 0.346, 0.362, 0.187, 0.567, 0.459)
+TN_ANR <- c(0.211, 0.262, 0.540, 0.437, 0.271, 0.429, 0.574, 0.185, 0.240)
 
-# Fit one-way ANOVA model
+BD_N <- c(1.656, 1.529, 1.682, 1.537, 1.618, 1.453, 1.433, 1.558, 1.212, 1.100, 1.198, 1.488, 1.213)
+BD_ANR <- c(0.926, 1.249, 1.043, 1.251, 1.156, 1.332, 1.297, 1.583, 1.385)
 
-SOC_model <- aov(values~group, data=SOC_Tukey)
-summary(SOC_model)
-# The p-value is not statistically significant. Therefore Tukey's test will not be used.
+# t-Test
 
-TN_model <- aov(values~group, data=TN_Tukey)
-summary(TN_model)
-# The p-value is not statistically significant. Therefore Tukey's test will not be used.
+t.test(SOC_N, SOC_ANR, var.equal=TRUE)
+# The p-value is 0.9487, so the null hypothesis remains true 
+# (the two population means are equal)
 
-BD_model <- aov(values~group, data=BD_Tukey)
-summary(BD_model)
-# The p-value is statistically significant. Therefore Tukey's test will be used.
+t.test(TN_N, TN_ANR, var.equal=TRUE)
+# The p-value is 0.4914, so the null hypothesis remains true 
+# (the two population means are equal)
 
+t.test(BD_N, BD_ANR, var.equal=TRUE)
+# The p-value is 0.03433, which is lower than 0.05, so we 
+# reject the null hypothesis (the two population means are not equal)
 
-
-# Tukey Test
-TukeyHSD(BD_model, conf.level=.95) 
-# The p-value is statistically significant. Therefore there is a statistically 
-# significant difference between the mean bulk density of each management strategy.
-
-# Plot Confidence Levels of the Tukey Test
-plot(TukeyHSD(BD_model, conf.level=.95), las = 2)
 
 
 
