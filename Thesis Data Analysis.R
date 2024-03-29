@@ -60,7 +60,7 @@ TN_plot <- ggplot(data = Data_bar) +
   geom_col(mapping = aes(x = Plot, y = TN))+
   ylab("TN in g/100g of soil")+
   xlab("Plot Number")+
-  ggtitle("Total Nitrogen (TN)) per Plot")
+  ggtitle("Total Nitrogen (TN) per Plot")
 
 # Bar chart for BD
 BD_plot <- ggplot(data = Data_bar) +
