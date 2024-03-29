@@ -15,24 +15,9 @@ library(DescTools)
 Data <- read_xlsx("D:/UP/Thesis/Thesis/Thesis.xlsx")
 print(Data, n=22)
 
-# Transforming the data to numeric class
-Data <- transform(Data, SOC = as.numeric(SOC), 
-          TN = as.numeric(TN),
-          BD = as.numeric(BD),
-          Plot = as.character(Plot))
-
-# Separating the columns
-SOC <- Data[2]
-SOC <- as.numeric(unlist(SOC))
-
-TN <- Data[3]
-TN <- as.numeric(unlist(TN))
-
-BD <- Data[4]
-BD <- as.numeric(unlist(BD))
 
 # Finding out more about each column
-SOC_df <- Data %>%
+SOC_df <- Data$`SOC in g/100g` %>%
   summarise(average = mean(SOC),
             median = median(SOC),
             mode = Mode(SOC),
