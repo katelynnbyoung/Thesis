@@ -103,6 +103,11 @@ t.test(BD_N, BD_ANR, var.equal=TRUE)
 
 # Pearson's Correlation Test
 
+# Creating vectors
+SOC <- as.numeric(unlist(Data[2]))
+TN <- as.numeric(unlist(Data[3]))
+BD <- as.numeric(unlist(Data[4]))
+
 # Testing TN and SOC
 cor.test(TN, SOC, method = "pearson")
 
