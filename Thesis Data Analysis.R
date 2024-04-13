@@ -84,6 +84,9 @@ TN_ANR <- c(0.211, 0.262, 0.540, 0.437, 0.271, 0.429, 0.574, 0.185, 0.240)
 BD_N <- c(1.656, 1.529, 1.682, 1.537, 1.618, 1.453, 1.433, 1.558, 1.212, 1.100, 1.198, 1.488, 1.213)
 BD_ANR <- c(0.926, 1.249, 1.043, 1.251, 1.156, 1.332, 1.297, 1.583, 1.385)
 
+SCS_N <- c(0.2236, 0.5100, 0.4059, 0.4321, 0.3591, 0.4183, 0.5762, 0.6995, 0.4304, 0.4110, 0.3292, 0.6865, 0.5840)
+SCS_ANR <- c(0.2483, 0.4322, 0.4137, 0.4883, 0.3440, 0.461, 0.4386, 0.4983, 0.4146)
+
 # t-Test
 
 t.test(SOC_N, SOC_ANR, var.equal=TRUE)
@@ -98,6 +101,9 @@ t.test(BD_N, BD_ANR, var.equal=TRUE)
 # The p-value is 0.03433, which is lower than 0.05, so we 
 # reject the null hypothesis (the two population means are not equal)
 
+t.test(SCS_N, SCS_ANR, var.equal=TRUE)
+# The p-value is 0.3302, so the null hypothesis remains true
+# (the two population means are equal)
 
 
 
