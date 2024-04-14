@@ -71,6 +71,51 @@ BD_plot <- ggplot(data = Data_bar) +
 
 
 
+# Comparison Bar Charts for ANR versus non-ANR measurements
+
+# Create data frame for SOC
+SOC_data <- data.frame(
+  name = c("ANR", "non-ANR"),
+  value = c(1.6653, 1.6535),
+  sd = c(0.0713, 0.1426)
+)
+
+# Create comparison bar chart for SOC
+ggplot(SOC_data) +
+  geom_bar( aes(x=name, y=value), stat="identity", fill="skyblue", alpha=0.7) +
+  geom_errorbar( aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3) +
+  labs(title = "SOC Comparison Between Management Strategies", x = "Management Strategy", y = "SOC in g/100 g of soil")
+
+# Create data frame for TN
+TN_data <- data.frame(
+  name = c("ANR", "non-ANR"),
+  value = c(0.3499, 0.3081),
+  sd = c(0.0490, 0.0363)
+)
+
+# Create comparison bar chart for TN
+ggplot(TN_data) +
+  geom_bar( aes(x=name, y=value), stat="identity", fill="skyblue", alpha=0.7) +
+  geom_errorbar( aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3) +
+  labs(title = "TN Comparison Between Management Strategies", x = "Management Strategy", y = "TN in g/100 g of soil")
+
+# Create data frame for BD
+BD_data <- data.frame(
+  name = c("ANR", "non-ANR"),
+  value = c(1.2468, 1.4365),
+  sd = c(0.0640, 0.0536)
+)
+
+# Create comparison bar chart for BD
+ggplot(BD_data) +
+  geom_bar( aes(x=name, y=value), stat="identity", fill="skyblue", alpha=0.7) +
+  geom_errorbar( aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3) +
+  labs(title = "BD Comparison Between Management Strategies", x = "Management Strategy", y = "BD in g/100 g of soil")
+
+
+
+
+
 # Independent Samples t-Test
 
 # Create vectors for each parameter
@@ -99,7 +144,8 @@ t.test(TN_N, TN_ANR, var.equal=TRUE)
 
 t.test(BD_N, BD_ANR, var.equal=TRUE)
 # The p-value is 0.03433, which is lower than 0.05, so we 
-# reject the null hypothesis (the two population means are not equal)
+# reject the null hypothesis (the two population means are not equal).
+# Thus, the average BD for non-ANR plots is significantly higher.
 
 t.test(SCS_N, SCS_ANR, var.equal=TRUE)
 # The p-value is 0.3302, so the null hypothesis remains true
