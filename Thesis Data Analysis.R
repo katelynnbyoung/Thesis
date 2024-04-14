@@ -110,7 +110,20 @@ BD_data <- data.frame(
 ggplot(BD_data) +
   geom_bar( aes(x=name, y=value), stat="identity", fill="skyblue", alpha=0.7) +
   geom_errorbar( aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3) +
-  labs(title = "BD Comparison Between Management Strategies", x = "Management Strategy", y = "BD in g/100 g of soil")
+  labs(title = "BD Comparison Between Management Strategies", x = "Management Strategy", y = "BD in g/cm3")
+
+# Create data frame for SCS
+SCS_data <- data.frame(
+  name = c("ANR", "non-ANR"),
+  value = c(0.4155, 0.4666),
+  sd = c(0.0259, 0.0385)
+)
+
+# Create comparison bar chart for SCS
+ggplot(SCS_data) +
+  geom_bar( aes(x=name, y=value), stat="identity", fill="skyblue", alpha=0.7) +
+  geom_errorbar( aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3) +
+  labs(title = "SCS Comparison Between Management Strategies", x = "Management Strategy", y = "SCS in tons/hectare")
 
 
 
