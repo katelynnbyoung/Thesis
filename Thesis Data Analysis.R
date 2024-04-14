@@ -75,7 +75,7 @@ BD_plot <- ggplot(data = Data_bar) +
 
 # Create data frame for SOC
 SOC_data <- data.frame(
-  name = c("ANR", "non-ANR"),
+  name = c("ANR", "Rainforestation"),
   value = c(1.6653, 1.6535),
   sd = c(0.0713, 0.1426)
 )
@@ -88,7 +88,7 @@ ggplot(SOC_data) +
 
 # Create data frame for TN
 TN_data <- data.frame(
-  name = c("ANR", "non-ANR"),
+  name = c("ANR", "Rainforestation"),
   value = c(0.3499, 0.3081),
   sd = c(0.0490, 0.0363)
 )
@@ -101,7 +101,7 @@ ggplot(TN_data) +
 
 # Create data frame for BD
 BD_data <- data.frame(
-  name = c("ANR", "non-ANR"),
+  name = c("ANR", "Rainforestation"),
   value = c(1.2468, 1.4365),
   sd = c(0.0640, 0.0536)
 )
@@ -114,7 +114,7 @@ ggplot(BD_data) +
 
 # Create data frame for SCS
 SCS_data <- data.frame(
-  name = c("ANR", "non-ANR"),
+  name = c("ANR", "Rainforestation"),
   value = c(0.4155, 0.4666),
   sd = c(0.0259, 0.0385)
 )
