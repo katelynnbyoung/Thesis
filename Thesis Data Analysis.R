@@ -175,14 +175,15 @@ BD <- as.numeric(unlist(Data[4]))
 
 # Testing TN and SOC
 cor.test(TN, SOC, method = "pearson")
-
 # The p-value is 0.0003695, which shows that the correlation is statistically significant.
 # The correlation coefficient is 0.6910264, which shows a positive correlation. 
 
 # Testing SOC and BD
 cor.test(BD, SOC, method = "pearson")
 # The p-value is not statistically significant at 0.171.
+# The correlation coefficient is -0.3026293, which shows a negative correlation.
 
 # Testing TN and BD
 cor.test(BD, TN, method = "pearson")
 # The p-value is 0.217, so it is not statistically significant.
+# The correlation coefficient is -0.2741305, which shows a negative correlation.
