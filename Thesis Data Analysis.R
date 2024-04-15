@@ -84,7 +84,9 @@ SOC_data <- data.frame(
 ggplot(SOC_data) +
   geom_bar( aes(x=name, y=value), stat="identity", fill="skyblue", alpha=0.7) +
   geom_errorbar( aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3) +
-  labs(title = "SOC Comparison Between Management Strategies", x = "Management Strategy", y = "SOC in g/100 g of soil")
+  labs(x = "Management Strategy", y = "SOC (g/100g)") +
+  theme_bw() +
+  theme(axis.text=element_text(size=11))
 
 # Create data frame for TN
 TN_data <- data.frame(
@@ -97,7 +99,9 @@ TN_data <- data.frame(
 ggplot(TN_data) +
   geom_bar( aes(x=name, y=value), stat="identity", fill="skyblue", alpha=0.7) +
   geom_errorbar( aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3) +
-  labs(title = "TN Comparison Between Management Strategies", x = "Management Strategy", y = "TN in g/100 g of soil")
+  labs(x = "Management Strategy", y = "TN (g/100g)") +
+  theme_bw() +
+  theme(axis.text=element_text(size=11))
 
 # Create data frame for BD
 BD_data <- data.frame(
@@ -110,20 +114,24 @@ BD_data <- data.frame(
 ggplot(BD_data) +
   geom_bar( aes(x=name, y=value), stat="identity", fill="skyblue", alpha=0.7) +
   geom_errorbar( aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3) +
-  labs(title = "BD Comparison Between Management Strategies", x = "Management Strategy", y = "BD in g/cm3")
+  labs(x = "Management Strategy", y = "BD (g/cm3)") +
+  theme_bw() +
+  theme(axis.text=element_text(size=11))
 
 # Create data frame for SCS
 SCS_data <- data.frame(
   name = c("ANR", "Rainforestation"),
-  value = c(0.4155, 0.4666),
-  sd = c(0.0259, 0.0385)
+  value = c(41.5471, 46.6606),
+  sd = c(2.5854, 3.8510)
 )
 
 # Create comparison bar chart for SCS
 ggplot(SCS_data) +
   geom_bar( aes(x=name, y=value), stat="identity", fill="skyblue", alpha=0.7) +
   geom_errorbar( aes(x=name, ymin=value-sd, ymax=value+sd), width=0.4, colour="orange", alpha=0.9, size=1.3) +
-  labs(title = "SCS Comparison Between Management Strategies", x = "Management Strategy", y = "SCS in tons/hectare")
+  labs(x = "Management Strategy", y = "SCS (tons/hectare)") +
+  theme_bw() +
+  theme(axis.text=element_text(size=11))
 
 
 
@@ -142,8 +150,8 @@ TN_ANR <- c(0.211, 0.262, 0.540, 0.437, 0.271, 0.429, 0.574, 0.185, 0.240)
 BD_N <- c(1.656, 1.529, 1.682, 1.537, 1.618, 1.453, 1.433, 1.558, 1.212, 1.100, 1.198, 1.488, 1.213)
 BD_ANR <- c(0.926, 1.249, 1.043, 1.251, 1.156, 1.332, 1.297, 1.583, 1.385)
 
-SCS_N <- c(0.2236, 0.5100, 0.4059, 0.4321, 0.3591, 0.4183, 0.5762, 0.6995, 0.4304, 0.4110, 0.3292, 0.6865, 0.5840)
-SCS_ANR <- c(0.2483, 0.4322, 0.4137, 0.4883, 0.3440, 0.461, 0.4386, 0.4983, 0.4146)
+SCS_N <- c(22.3574, 51.0026, 40.5916, 43.2078, 35.9121, 41.8347, 57.6155, 69.9528, 43.0414, 41.1038, 32.9211, 68.6453, 58.4017)
+SCS_ANR <- c(24.8326, 43.2201, 41.3744, 48.8262, 34.3961, 46.1213, 43.8602, 49.8340, 41.4591)
 
 # t-Test
 
@@ -161,7 +169,7 @@ t.test(BD_N, BD_ANR, var.equal=TRUE)
 # Thus, the average BD for non-ANR plots is significantly higher.
 
 t.test(SCS_N, SCS_ANR, var.equal=TRUE)
-# The p-value is 0.3302, so the null hypothesis remains true
+# The p-value is 0.3304, so the null hypothesis remains true
 # (the two population means are equal)
 
 
