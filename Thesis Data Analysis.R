@@ -41,7 +41,7 @@ BD_df <- Data %>%
 
 # Data Visualization
 
-pairs(Data[2:4])
+pairs(Data[2:5])
 
 # Order Plot numbers for bar charts
 Data_bar <- Data
@@ -180,6 +180,7 @@ t.test(SCS_N, SCS_ANR, var.equal=TRUE)
 SOC <- as.numeric(unlist(Data[2]))
 TN <- as.numeric(unlist(Data[3]))
 BD <- as.numeric(unlist(Data[4]))
+SCS <- as.numeric(unlist(Data[5]))
 
 # Testing TN and SOC
 cor.test(TN, SOC, method = "pearson")
@@ -195,3 +196,18 @@ cor.test(BD, SOC, method = "pearson")
 cor.test(BD, TN, method = "pearson")
 # The p-value is 0.217, so it is not statistically significant.
 # The correlation coefficient is -0.2741305, which shows a negative correlation.
+
+# Testing SOC and SCS
+cor.test(SOC, SCS, method = "pearson")
+# The p-value is 1.056e-06, which shows that the correlation is statistically significant.
+# The correlation coefficient is 0.8391895, which shows a positive correlation.
+
+# Testing SCS and BD
+cor.test(BD, SCS, method = "pearson")
+# The p-value is 0.2659, so it is not statistically significant.
+# The correlation coefficient is 0.2479479, which shows a positive correlation.
+
+# Testing SCS and TN
+cor.test(TN, SCS, method = "pearson")
+# The p-value is 0.01408, which shows that the correlation is statistically significant.
+# The correlation coefficient is 0.5154371, which shows a positive correlation.
