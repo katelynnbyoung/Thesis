@@ -137,6 +137,20 @@ ggplot(SCS_data) +
 
 
 
+# Create stacked barplot graph for total carbon stock of ACF
+
+# Create data frame
+SCS_stacked_df <- data.frame(team = c(" "),
+                Type= c("Soil Carbon Stock", "Tree Carbon Stock"),
+                 points =c(2628.0848, 419.649303))
+
+# Create graph
+ggplot(SCS_stacked_df, aes(fill=Type, y=points, x = team)) + 
+  geom_bar(position='stack', stat='identity') + 
+  labs(x = "Total Carbon Stock of ACF", y = "Carbon Stock (tonnes)")
+
+
+
 # Independent Samples t-Test
 
 # Create vectors for each parameter
