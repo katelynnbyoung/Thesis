@@ -14,7 +14,8 @@ library(DescTools)
 # Loading data
 Data <- read_xlsx("D:/UP/Thesis/Thesis/Thesis.xlsx")
 print(Data, n=22)
-
+Tolabing <- read_xlsx("D:/UP/Thesis/Thesis/Tolabing.xlsx")
+print(Tolabing, n = 22)
 
 # Finding out more about each column
 SOC_df <- Data %>%
@@ -42,6 +43,7 @@ BD_df <- Data %>%
 # Data Visualization
 
 pairs(Data[2:5])
+pairs(Tolabing[2:4])
 
 # Order Plot numbers for bar charts
 Data_bar <- Data
@@ -225,3 +227,25 @@ cor.test(BD, SCS, method = "pearson")
 cor.test(TN, SCS, method = "pearson")
 # The p-value is 0.01408, which shows that the correlation is statistically significant.
 # The correlation coefficient is 0.5154371, which shows a positive correlation.
+
+
+
+# Testing SCS, Abundance, and Diversity
+SCS <- as.numeric(unlist(Tolabing[2]))
+Abundance <- as.numeric(unlist(Tolabing[3]))
+Diversity <- as.numeric(unlist(Tolabing[4]))
+
+# Testing SCS and Abundance
+cor.test(SCS, Abundance, method = "pearson")
+# The p-value is 0.602, so it is not statistically significant.
+# The correlation coefficient is 0.1176737, which shows a positive correlation.
+
+# Testing SCS and Diversity
+cor.test(SCS, Diversity, method = "pearson")
+# The p-value is 0.9785, so it is not statistically significant.
+# The correlation coefficient is -0.006090195, which shows a negative correlation.
+
+# Testing Abundance and Diversity
+cor.test(Abundance, Diversity, method = "pearson")
+# The p-value is 3.135e-05, so it is statistically significant.
+# The correlation coefficient is 0.7668752 , which shows a positive correlation.
