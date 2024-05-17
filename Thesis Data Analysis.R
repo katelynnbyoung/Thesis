@@ -42,7 +42,7 @@ BD_df <- Data %>%
 
 # Data Visualization
 
-pairs(Data[2:5])
+pairs(Data[2:4])
 pairs(Tolabing[2:4])
 
 # Order Plot numbers for bar charts
@@ -153,7 +153,16 @@ ggplot(SCS_stacked_df, aes(fill=Type, y=points, x = team)) +
 
 
 
+
+
+
+
+
+
+
 # Independent Samples t-Test
+
+
 
 # Create vectors for each parameter
 
@@ -168,6 +177,51 @@ BD_ANR <- c(0.926, 1.249, 1.043, 1.251, 1.156, 1.332, 1.297, 1.583, 1.385)
 
 SCS_N <- c(22.3574, 51.0026, 40.5916, 43.2078, 35.9121, 41.8347, 57.6155, 69.9528, 43.0414, 41.1038, 32.9211, 68.6453, 58.4017)
 SCS_ANR <- c(24.8326, 43.2201, 41.3744, 48.8262, 34.3961, 46.1213, 43.8602, 49.8340, 41.4591)
+
+
+
+
+
+# Creates QQ-plots for each parameter
+
+
+# Create the standardize function
+standardize <- function(x){return((x-mean(x))/sd(x))}
+
+
+
+# Create the QQ-plots for SOC
+qqnorm(standardize(SOC_N), main = "QQ Plot of SOC for Rainforestation")
+abline(0,1)
+
+qqnorm(standardize(SOC_ANR), main = "QQ Plot of SOC for ANR")
+abline(0,1)
+
+# The points fall close to the line, therefore we can assume normality.
+
+
+
+# Create the QQ-plots for TN
+qqnorm(standardize(TN_N), main = "QQ Plot of TN for Rainforestation")
+abline(0,1)
+
+qqnorm(standardize(TN_ANR), main = "QQ Plot of TN for ANR")
+abline(0,1)
+
+# The points fall close to the line, therefore we can assume normality.
+
+
+
+# Create the QQ-plots for BD
+qqnorm(standardize(BD_N), main = "QQ Plot of BD for Rainforestation")
+abline(0,1)
+
+qqnorm(standardize(BD_ANR), main = "QQ Plot of BD for ANR")
+abline(0,1)
+
+# The points fall close to the line, therefore we can assume normality.
+
+
 
 # t-Test
 
